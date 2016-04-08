@@ -9,5 +9,7 @@ mvn spring-boot:run
 http://localhost:8080
 http://localhost:8080/monitoring/users
 
+mvn integration-test
+
 Deployed application:
 https://zooplus-forex-calc.herokuapp.com/
