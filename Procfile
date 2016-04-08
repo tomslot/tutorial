@@ -1,1 +1,1 @@
-mvn spring-boot:run
+java -Dserver.port=$PORT -jar  target/forex-calc-0.1.0.jar
