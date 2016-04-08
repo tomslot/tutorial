@@ -1,0 +1,13 @@
+
+
+REPO URLs:
+https://github.com/tomslot/tutorial.git
+
+Local run:
+
+mvn spring-boot:run
+http://localhost:8080
+http://localhost:8080/monitoring/users
+
+Deployed application:
+https://zooplus-forex-calc.herokuapp.com/
