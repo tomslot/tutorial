@@ -27,6 +27,6 @@ public class TestMonitoringIntegration {
                 get("/monitoring/users").
         then().
                 statusCode(HttpStatus.SC_OK).
-                body(containsString("User"));
+                body(containsString("ForexUser"));
     }
 }

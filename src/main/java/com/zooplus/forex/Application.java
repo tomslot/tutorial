@@ -1,6 +1,6 @@
 package com.zooplus.forex;
 
-import com.zooplus.forex.persistence.User;
+import com.zooplus.forex.persistence.ForexUser;
 import com.zooplus.forex.persistence.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +20,9 @@ public class Application {
     @Bean
     public CommandLineRunner demo(UserRepository repository) {
         return (args) -> {
-            User predefinedUser = new User();
-            predefinedUser.setLogin("tomslot");
-            predefinedUser.setPassword("pwd");
+            ForexUser predefinedUser = new ForexUser();
+            predefinedUser.setLogin("user");
+            predefinedUser.setPassword("user");
             repository.save(predefinedUser);
             log.info("Created predefined user: " + predefinedUser);
         };
