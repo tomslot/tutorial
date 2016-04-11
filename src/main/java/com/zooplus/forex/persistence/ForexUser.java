@@ -1,9 +1,9 @@
 package com.zooplus.forex.persistence;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,6 +28,9 @@ public class ForexUser {
         this.id = id;
     }
 
+    @NotNull
+    @Size(min = 3, max = 16)
+    @Column(unique = true)
     public String getLogin() {
         return login;
     }
@@ -36,6 +39,8 @@ public class ForexUser {
         this.login = login;
     }
 
+    @NotNull
+    @Size(min = 3, max = 16)
     public String getPassword() {
         return password;
     }
