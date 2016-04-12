@@ -1,10 +1,9 @@
 package com.zooplus.forex.controller;
 
-import com.zooplus.forex.model.CurrencyEnum;
-import com.zooplus.forex.model.CurrencyQuery;
-import com.zooplus.forex.model.ForexUser;
-import com.zooplus.forex.model.UserRepository;
+import com.zooplus.forex.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -59,8 +58,12 @@ public class CurrencyConversionController {
         CurrencyQuery predefinedQuery = new CurrencyQuery();
         predefinedQuery.setAmount(100.);
         model.addAttribute("currencyQuery", predefinedQuery);
-        List<CurrencyQuery> previousQueries = getUser().getQueries();
-        List<String> renderedQueries = previousQueries.stream().map(CurrencyQuery::toShortString).collect(Collectors.toList());
+        Page<CurrencyQuery> previousQueries = userRepository.findLastQueriesForUser(getUser().getId(), new PageRequest(0, 10));
+        List<String> renderedQueries = new ArrayList<>();
+
+        for (CurrencyQuery query : previousQueries){
+            renderedQueries.add(query.toShortString());
+        }
 
         model.addAttribute("previousQueries", renderedQueries);
     }
