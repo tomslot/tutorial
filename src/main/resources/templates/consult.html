@@ -9,5 +9,39 @@
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Sign Out"/>
 </form>
+<br/><br/><h1>Query conversion rate</h1>
+<form action="#" th:action="@{/}" th:object="${currencyQuery}" method="post">
+    <table>
+        <tr>
+            <td>Source currency:</td>
+            <td>
+                <select th:field="*{srcCurrency}">
+                    <option th:each="currency : ${supportedCurrencies}"
+                            th:value="${currency}" th:text="${currency}">EUR</option>
+                </select>
+            </td>
+
+        </tr>
+        <tr>
+            <td>Amount:</td>
+            <td><input type="text" th:field="*{amount}" /></td>
+            <td th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}">Invalid Number</td>
+        </tr>
+        <tr>
+            <td>Target currency:</td>
+            <td>
+                <select th:field="*{dstCurrency}">
+                    <option th:each="currency : ${supportedCurrencies}"
+                            th:value="${currency}" th:text="${currency}">EUR</option>
+                </select>
+            </td>
+
+        </tr>
+        <tr>
+            <td><button type="submit">Submit</button></td>
+        </tr>
+    </table>
+</form>
+
 </body>
 </html>
