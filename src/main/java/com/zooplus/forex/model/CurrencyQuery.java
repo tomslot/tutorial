@@ -95,9 +95,9 @@ public class CurrencyQuery {
     }
 
     public String toShortString(){
-        return String.format("%s: %.2f %s = %.2f %s",
-                dateFormat.format(getDate()),
-                getAmount(), getSrcCurrency(), getConvertedAmount(), getDstCurrency());
+        return String.format("%.2f %s = %.2f %s (%s)",
+                getAmount(), getSrcCurrency(), getConvertedAmount(),
+                getDstCurrency(), dateFormat.format(getDate()));
     }
 
     @Override
