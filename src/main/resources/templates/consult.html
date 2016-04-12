@@ -9,6 +9,12 @@
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Sign Out"/>
 </form>
+
+<div th:if="${lastQueryResult}">
+    <h1>Last Query Result</h1>
+    <p th:text="${lastQueryResult}">10.00 EUR = 12.01 USD</p>
+</div>
+
 <br/><br/><h1>Query conversion rate</h1>
 <form action="#" th:action="@{/}" th:object="${currencyQuery}" method="post">
     <table>

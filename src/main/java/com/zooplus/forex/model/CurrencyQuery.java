@@ -78,6 +78,11 @@ public class CurrencyQuery {
         this.user = user;
     }
 
+    public String toShortString(){
+        return String.format("%.2f %s = %.2f %s",
+                getAmount(), getSrcCurrency(), getConvertedAmount(), getDstCurrency());
+    }
+
     @Override
     public String toString() {
         return (new ReflectionToStringBuilder(this) {
