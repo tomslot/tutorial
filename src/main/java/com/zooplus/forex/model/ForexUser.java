@@ -6,11 +6,14 @@ import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+import java.util.List;
+
 @Entity
 public class ForexUser {
     private Long id;
     private String login;
     private String password;
+    private List<CurrencyQuery> queries;
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -41,6 +44,15 @@ public class ForexUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @OneToMany(mappedBy="user", cascade = CascadeType.ALL)
+    public List<CurrencyQuery> getQueries() {
+        return queries;
+    }
+
+    public void setQueries(List<CurrencyQuery> queries) {
+        this.queries = queries;
     }
 
     @Override
