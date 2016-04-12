@@ -1,16 +1,10 @@
-package com.zooplus.forex.persistence;
+package com.zooplus.forex.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-
-import java.beans.Transient;
-import java.util.Collection;
-import java.util.Collections;
 
 @Entity
 public class ForexUser {

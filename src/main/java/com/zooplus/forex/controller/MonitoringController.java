@@ -1,6 +1,6 @@
-package com.zooplus.forex;
+package com.zooplus.forex.controller;
 
-import com.zooplus.forex.persistence.UserRepository;
+import com.zooplus.forex.model.UserRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

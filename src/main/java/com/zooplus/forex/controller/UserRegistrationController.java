@@ -1,7 +1,7 @@
-package com.zooplus.forex;
+package com.zooplus.forex.controller;
 
-import com.zooplus.forex.persistence.ForexUser;
-import com.zooplus.forex.persistence.UserRepository;
+import com.zooplus.forex.model.ForexUser;
+import com.zooplus.forex.model.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,24 +11,16 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.Collections;
 
 @Controller
-public class WebController {
+public class UserRegistrationController {
     @Autowired
     UserRepository userRepository;
 
-    @RequestMapping(value = "/")
-    public String calculate(Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("login", auth.getName());
 
-        return "consult";
-    }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String saveNewUser(@Valid ForexUser forexUser, BindingResult bindingResult, Model model) {

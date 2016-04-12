@@ -1,4 +1,4 @@
-package com.zooplus.forex.persistence;
+package com.zooplus.forex.model;
 
 import org.springframework.data.repository.CrudRepository;
 

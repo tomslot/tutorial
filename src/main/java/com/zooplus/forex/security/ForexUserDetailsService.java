@@ -1,7 +1,7 @@
 package com.zooplus.forex.security;
 
-import com.zooplus.forex.persistence.ForexUser;
-import com.zooplus.forex.persistence.UserRepository;
+import com.zooplus.forex.model.ForexUser;
+import com.zooplus.forex.model.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;

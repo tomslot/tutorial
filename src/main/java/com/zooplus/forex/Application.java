@@ -1,7 +1,7 @@
 package com.zooplus.forex;
 
-import com.zooplus.forex.persistence.ForexUser;
-import com.zooplus.forex.persistence.UserRepository;
+import com.zooplus.forex.model.ForexUser;
+import com.zooplus.forex.model.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -18,7 +18,7 @@ public class Application {
     }
 
     @Bean
-    public CommandLineRunner demo(UserRepository repository) {
+    public CommandLineRunner createPredefinedUser(UserRepository repository) {
         return (args) -> {
             ForexUser predefinedUser = new ForexUser();
             predefinedUser.setLogin("user");
