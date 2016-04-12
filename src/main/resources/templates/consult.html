@@ -15,7 +15,7 @@
     <p th:text="${lastQueryResult}">10.00 EUR = 12.01 USD</p>
 </div>
 
-<br/><br/><h1>Query conversion rate</h1>
+<br/><h1>Query conversion rate</h1>
 <form action="#" th:action="@{/}" th:object="${currencyQuery}" method="post">
     <table>
         <tr>
@@ -48,6 +48,13 @@
         </tr>
     </table>
 </form>
+<h1>Your previous queries:</h1>
+<p th:if="${#lists.isEmpty(previousQueries)}">No queries found</p>
+
+<ul>
+    <li th:each="query : ${previousQueries}"
+        th:text="${query}">10.00 EUR = 11.00 USD</li>
+</ul>
 
 </body>
 </html>

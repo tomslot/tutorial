@@ -14,7 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class CurrencyConversionController {
@@ -39,12 +42,11 @@ public class CurrencyConversionController {
         currencyQuery.setConvertedAmount(0.);
 
         // save query in the history
-        ForexUser user = userRepository.findByLogin(getLoginName()).get(0);
+        ForexUser user = getUser();
         currencyQuery.setUser(user);
         user.getQueries().add(currencyQuery);
         currencyQuery.setTimestamp(new Date());
         userRepository.save(user);
-
         model.addAttribute("lastQueryResult", currencyQuery.toShortString());
 
         return "consult";
@@ -57,6 +59,14 @@ public class CurrencyConversionController {
         CurrencyQuery predefinedQuery = new CurrencyQuery();
         predefinedQuery.setAmount(100.);
         model.addAttribute("currencyQuery", predefinedQuery);
+        List<CurrencyQuery> previousQueries = getUser().getQueries();
+        List<String> renderedQueries = previousQueries.stream().map(CurrencyQuery::toShortString).collect(Collectors.toList());
+
+        model.addAttribute("previousQueries", renderedQueries);
+    }
+
+    private ForexUser getUser(){
+        return userRepository.findByLogin(getLoginName()).get(0);
     }
 
     private String getLoginName(){

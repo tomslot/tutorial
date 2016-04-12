@@ -90,7 +90,8 @@ public class CurrencyQuery {
             @Override
             protected Object getValue(Field field) throws IllegalArgumentException, IllegalAccessException {
                 if ("user".equals(field.getName())){ // avoid infinite recursion
-                    return ((ForexUser)field.get(CurrencyQuery.this)).getLogin();
+                    ForexUser user = (ForexUser)field.get(CurrencyQuery.this);
+                    return user == null ? null : user.getLogin();
                 }
 
                 return super.getValue(field);
