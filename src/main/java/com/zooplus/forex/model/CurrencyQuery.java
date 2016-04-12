@@ -1,20 +1,25 @@
 package com.zooplus.forex.model;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
 public class CurrencyQuery {
+    private static final String DATE_PATTERN = "dd.MM.yyyy";
+    private static SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_PATTERN);
+
     private Long id;
     private CurrencyEnum srcCurrency;
     private CurrencyEnum dstCurrency;
     private Date timestamp;
     private Double amount;
     private Double convertedAmount;
+    private Date date;
     private ForexUser user;
 
     @Id
@@ -45,6 +50,7 @@ public class CurrencyQuery {
         this.dstCurrency = dstCurrency;
     }
 
+    @Temporal(TemporalType.TIMESTAMP)
     public Date getTimestamp() {
         return timestamp;
     }
@@ -78,8 +84,19 @@ public class CurrencyQuery {
         this.user = user;
     }
 
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern=DATE_PATTERN)
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
     public String toShortString(){
-        return String.format("%.2f %s = %.2f %s",
+        return String.format("%s: %.2f %s = %.2f %s",
+                dateFormat.format(getDate()),
                 getAmount(), getSrcCurrency(), getConvertedAmount(), getDstCurrency());
     }
 

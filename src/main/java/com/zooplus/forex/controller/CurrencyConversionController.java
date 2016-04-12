@@ -44,6 +44,7 @@ public class CurrencyConversionController {
         ForexUser user = getUser();
         currencyQuery.setUser(user);
         user.getQueries().add(currencyQuery);
+        System.err.println("user.getQueries().size()=" + user.getQueries().size());
         currencyQuery.setTimestamp(new Date());
         userRepository.save(user);
         model.addAttribute("lastQueryResult", currencyQuery.toShortString());
@@ -57,6 +58,7 @@ public class CurrencyConversionController {
 
         CurrencyQuery predefinedQuery = new CurrencyQuery();
         predefinedQuery.setAmount(100.);
+        predefinedQuery.setDate(new Date());
         model.addAttribute("currencyQuery", predefinedQuery);
         Page<CurrencyQuery> previousQueries = userRepository.findLastQueriesForUser(getUser().getId(), new PageRequest(0, 10));
         List<String> renderedQueries = new ArrayList<>();

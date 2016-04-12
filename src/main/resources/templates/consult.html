@@ -44,6 +44,11 @@
 
         </tr>
         <tr>
+            <td>Date:</td>
+            <td><input type="text" th:field="*{date}" /></td>
+            <td th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Invalid Date</td>
+        </tr>
+        <tr>
             <td><button type="submit">Submit</button></td>
         </tr>
     </table>

@@ -36,6 +36,7 @@ public class Application {
             sampleQuery.setAmount(100.);
             sampleQuery.setConvertedAmount(200.);
             sampleQuery.setTimestamp(new Date());
+            sampleQuery.setDate(new Date());
             sampleQuery.setUser(predefinedUser);
             predefinedUser.setQueries(Collections.singletonList(sampleQuery));
 
