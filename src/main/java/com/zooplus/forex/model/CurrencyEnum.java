@@ -7,5 +7,7 @@ public enum CurrencyEnum {
     NZD,
     AUD,
     JPY,
-    HUF
+    HUF,
+    PLN,
+    CZK
 }
