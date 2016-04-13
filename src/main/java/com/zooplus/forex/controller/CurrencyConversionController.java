@@ -67,6 +67,8 @@ public class CurrencyConversionController {
 
         CurrencyQuery predefinedQuery = new CurrencyQuery();
         predefinedQuery.setAmount(100.);
+        predefinedQuery.setSrcCurrency(CurrencyEnum.EUR);
+        predefinedQuery.setDstCurrency(CurrencyEnum.USD);
         predefinedQuery.setDate(new Date());
         model.addAttribute("currencyQuery", predefinedQuery);
         Page<CurrencyQuery> previousQueries = userRepository.findLastQueriesForUser(getUser().getId(), new PageRequest(0, 10));
