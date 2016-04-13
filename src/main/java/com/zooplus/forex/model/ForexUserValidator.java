@@ -17,7 +17,7 @@ public class ForexUserValidator implements Validator {
         ForexUser user = (ForexUser) o;
 
         if (!user.getPassword().equals(user.getRepeatedPassword())){
-            errors.reject("repeatedPassword", "passwords do not match");
+            errors.rejectValue("repeatedPassword", "password.mismatch");
         }
     }
 }
