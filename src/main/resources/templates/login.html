@@ -5,6 +5,7 @@
     <title>Forex Login</title>
 </head>
 <body>
+<p>You can use predefined credentials <b>user/user</b>, or <a href="/register">create a new account</a></p>
 <div th:if="${param.error}">
     Invalid username and password.
 </div>
@@ -16,6 +17,5 @@
     <div><label> Password: <input type="password" name="password"/> </label></div>
     <div><input type="submit" value="Sign In"/></div>
 </form>
-<div><a href="/register">Register new user</a></div>
 </body>
 </html>
