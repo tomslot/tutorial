@@ -1,6 +1,7 @@
 package com.zooplus.forex.controller;
 
 import com.zooplus.forex.model.*;
+import com.zooplus.forex.service.CurrencyConversionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,6 +24,9 @@ public class CurrencyConversionController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    CurrencyConversionService conversionService;
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String showEmptyForm(Model model) {
         setupConversionForm(model);
@@ -38,7 +42,7 @@ public class CurrencyConversionController {
         setupConversionForm(model);
 
         // calculate conversion result
-        currencyQuery.setConvertedAmount(0.);
+        conversionService.covert(currencyQuery);
 
         // save query in the history
         ForexUser user = getUser();
