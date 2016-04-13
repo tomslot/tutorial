@@ -28,6 +28,7 @@ public class Application {
             ForexUser predefinedUser = new ForexUser();
             predefinedUser.setLogin("user");
             predefinedUser.setPassword("user");
+            predefinedUser.setEmail("tomslot@gmail.com");
 
 //            CurrencyQuery sampleQuery = new CurrencyQuery();
 //            sampleQuery.setSrcCurrency(CurrencyEnum.AUD);
