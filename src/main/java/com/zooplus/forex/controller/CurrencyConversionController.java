@@ -39,6 +39,11 @@ public class CurrencyConversionController {
             @Valid CurrencyQuery currencyQuery, BindingResult bindingResult,
             Model model
     ) {
+        if (bindingResult.hasErrors()){
+            model.addAttribute("supportedCurrencies", CurrencyEnum.values());
+            return "consult";
+        }
+
         setupConversionForm(model);
 
         // calculate conversion result

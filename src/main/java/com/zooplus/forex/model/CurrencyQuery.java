@@ -4,6 +4,9 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -59,6 +62,8 @@ public class CurrencyQuery {
         this.timestamp = timestamp;
     }
 
+    @NotNull
+    @Min(0)
     public Double getAmount() {
         return amount;
     }
@@ -84,6 +89,8 @@ public class CurrencyQuery {
         this.user = user;
     }
 
+    @Past
+    @NotNull
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern=DATE_PATTERN)
     public Date getDate() {
