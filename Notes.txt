@@ -1,15 +1,21 @@
-
-
-REPO URLs:
+GitHub repository:
 https://github.com/tomslot/tutorial.git
 
-Local run:
-
+Local run shortcut:
 mvn spring-boot:run
+
+Build JAR:
+mvn package
+
+Execute JAR:
+java -jar target/forex-calc-0.1.0.jar
+
+local URLs:
 http://localhost:8080
 http://localhost:8080/monitoring/users
 
+Integration tests:
 mvn integration-test
 
-Deployed application:
+Remotely deployed application:
 https://zooplus-forex-calc.herokuapp.com/
