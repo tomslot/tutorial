@@ -19,3 +19,6 @@ mvn integration-test
 
 Remotely deployed application:
 https://zooplus-forex-calc.herokuapp.com/
+
+Auto build & test run:
+https://travis-ci.org/tomslot/tutorial/builds
